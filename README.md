@@ -109,6 +109,3 @@ location ^~ /prod/ {
 Welcome to Pawan's Demo for AWS CodePipeline
 Current Environment: staging
 ```
-
----
-```
