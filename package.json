@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev-build": "REACT_APP_ENV=dev PUBLIC_URL=/dev react-scripts build",
-    "stage-build": "REACT_APP_ENV=staging PUBLIC_URL=/staging react-scripts build",
+    "staging-build": "REACT_APP_ENV=staging PUBLIC_URL=/staging react-scripts build",
     "prod-build": "REACT_APP_ENV=prod PUBLIC_URL=/prod react-scripts build",
     "build": "react-scripts build",
     "start": "react-scripts start",
