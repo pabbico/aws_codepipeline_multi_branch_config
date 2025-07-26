@@ -8,11 +8,22 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "BUILD_ENV=prod react-scripts build",
-    "development-build": "BUILD_ENV=dev react-scripts build",
-    "staging-build": "BUILD_ENV=staging react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build",
+    "dev-build": "REACT_APP_ENV=dev npm run build",
+    "stage-build": "REACT_APP_ENV=staging npm run build",
+    "prod-build": "REACT_APP_ENV=prod npm run build",
+    "development-build": "REACT_APP_ENV=dev npm run build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
