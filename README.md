@@ -15,7 +15,7 @@ This project demonstrates how to deploy a single React app to multiple environme
 
 ## Project Structure
 
-```
+
 
 .
 ├── buildspec.yml
@@ -29,7 +29,7 @@ This project demonstrates how to deploy a single React app to multiple environme
 ├── public/
 ├── src/
 └── ...
-
+```
 ````
 
 ---
