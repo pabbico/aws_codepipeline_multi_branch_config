@@ -13,6 +13,7 @@ phases:
       - echo "🏗 Building for $REACT_APP_ENV environment"
       - npm run ${REACT_APP_ENV}-build
       - chmod +x scripts/*.sh
+      - scripts/generate_appspec.sh
 
 artifacts:
   files:
