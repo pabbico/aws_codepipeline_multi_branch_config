@@ -7,8 +7,8 @@ case "$DEPLOYMENT_GROUP_NAME" in
   *dev*)
     ENV="dev"
     ;;
-  *stage*)
-    ENV="stage"
+  *staging*)
+    ENV="staging"
     ;;
   *prod*)
     ENV="prod"
