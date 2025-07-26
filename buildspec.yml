@@ -1,0 +1,61 @@
+version: 0.2
+
+env:
+  variables:
+    ARCHIVE_BASE: "/home/ubuntu/archive"
+    BUILD_OUTPUT_DIR: "build"
+    TIMESTAMP: "{{timestamp}}"  # Placeholder to replace dynamically if needed
+
+phases:
+  install:
+    commands:
+      - echo "🔧 Install phase started..."
+      - apt update -y
+      - apt install ca-certificates -y
+      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
+      - apt install -y nodejs
+    finally:
+      - echo "✅ Install phase completed"
+
+  pre_build:
+    commands:
+      - echo "⚙️ Pre-build started..."
+      - echo "Using BUILD_ENV: $BUILD_ENV"
+      - export REACT_APP_ENV=$BUILD_ENV
+    finally:
+      - echo "✅ Pre-build completed"
+
+  build:
+    commands:
+      - echo "🏗 Build phase started..."
+      - npm install
+      - |
+        if [ "$BUILD_ENV" = "prod" ]; then
+          npm run build
+        elif [ "$BUILD_ENV" = "staging" ]; then
+          npm run build
+        elif [ "$BUILD_ENV" = "dev" ]; then
+          npm run development-build
+        else
+          echo "❌ Unknown BUILD_ENV: $BUILD_ENV"
+          exit 1
+        fi
+    finally:
+      - echo "✅ Build phase completed"
+
+  post_build:
+    commands:
+      - echo "📦 Post-build started..."
+      - export ARCHIVE_PATH="$ARCHIVE_BASE/$BUILD_ENV/$(date +%Y%m%d-%H%M%S)"
+      - mkdir -p $ARCHIVE_PATH
+      - cp -r $BUILD_OUTPUT_DIR/* $ARCHIVE_PATH/
+      - echo "📁 Archived build at: $ARCHIVE_PATH"
+      - echo "✅ Post-build completed"
+
+artifacts:
+  files:
+    - build/**/*
+    - appspec.yml
+    - scripts/**
+  name: "react_build_${BUILD_ENV}_$(date +%Y%m%d%H%M%S)"
+
