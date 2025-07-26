@@ -2,17 +2,20 @@
   "name": "env-aware-react-app",
   "version": "1.0.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },
   "scripts": {
+    "dev-build": "REACT_APP_ENV=dev PUBLIC_URL=/dev react-scripts build",
+    "stage-build": "REACT_APP_ENV=staging PUBLIC_URL=/staging react-scripts build",
+    "prod-build": "REACT_APP_ENV=prod PUBLIC_URL=/prod react-scripts build",
     "build": "react-scripts build",
-    "dev-build": "REACT_APP_ENV=dev npm run build",
-    "stage-build": "REACT_APP_ENV=staging npm run build",
-    "prod-build": "REACT_APP_ENV=prod npm run build",
-    "development-build": "REACT_APP_ENV=dev npm run build"
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
